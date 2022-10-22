@@ -25,17 +25,18 @@ public class Main extends  Thread {
 class Storage {
     protected static ArrayList<Integer> list = new ArrayList<Integer>();
 
-  protected static void doStore(int integer){
+    void doStore(int integer){
      list.add(integer);
  }
 }
 
 class Counter {
+    Storage storage = new Storage();
 
 
      void doCount(){
         for (int x = 0; x<11;x++){
-            Storage.doStore(x);
+            storage.doStore(x);
         }
     }
 }
