@@ -10,28 +10,23 @@ public class Main extends  Thread {
     public static void main(String[] args) {
         Main thread = new Main();
         thread.start();
+        System.out.println("Wait while thread is running");
         while(thread.isAlive()){
-            System.out.println("Waiting...");
         }
         System.out.println("Finish");
-
-
     }
 
     public void run(){
         counter.doCount();
         printer.doPrint();
-
-
     }
 }
 
 class Storage {
-     static ArrayList<Integer> list = new ArrayList<Integer>();
+    protected static ArrayList<Integer> list = new ArrayList<Integer>();
 
- static void doStore(int integer){
+  protected static void doStore(int integer){
      list.add(integer);
-
  }
 }
 
@@ -41,16 +36,13 @@ class Counter {
      void doCount(){
         for (int x = 0; x<11;x++){
             Storage.doStore(x);
-
         }
     }
-
 }
+
 class Printer {
      void doPrint(){
-        System.out.println(Storage.list);
-
+         for(int i = 0;i < Storage.list.toArray().length;i++)
+        System.out.println(Storage.list.get(i));
     }
-
-
 }
